@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+   {% block pagecontent %}
+      <!-- MAIN SECTION -->                  
+      <section id="article-section" class="line archive">
+         <div class="margin">
+            <!-- ARTICLES -->             
+            <div class="s-12 l-9">
+               {% if authorname %}
+               <article class="margin-bottom">
+                  <div class="post-4 line">
+                     <!-- date -->                 
+                     <div class="s-12 l-12 " style="padding: 1em 1em 1em;">
+                        <p class="month" style="color: white;font-size: x-large;">Error no quotes of <u>{{authorname}}</u> found.</p>
+                        <p class="month" style="color: white;font-size: x-large;">You can upload the quotes <a href="/user/quotes/">here</a></p>
+
+                     </div>
+                  </div>
+               </article>
+               {% endif %}
+
+               {% if categoryname %}
+               <article class="margin-bottom">
+                  <div class="post-4 line">
+                     <!-- date -->                 
+                     <div class="s-12 l-12 " style="padding: 1em 1em 1em;">
+                        <p class="month" style="color: white;font-size: x-large;">Error no quotes of <u>{{categoryname}}</u> Found.</p>
+                        <p class="month" style="color: white;font-size: x-large;">You can upload the quotes <a href="/user/quotes/">here</a></p>
+
+                     </div>
+                  </div>
+               </article>
+               {% endif %}
+
+               {% if id %}
+               <article class="margin-bottom">
+                  <div class="post-4 line">
+                     <!-- date -->                 
+                     <div class="s-12 l-12 " style="padding: 1em 1em 1em;">
+                        <p class="month" style="color: white;font-size: x-large;">Error "{{id}}" is not a valid Id. Please check the link again </p>
+
+                     </div>
+                  </div>
+               </article>
+               {% endif %}
+
+               
+            </div>
+           
+   {% endblock %}

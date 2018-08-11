@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+   {% block pagecontent %}
+      <!-- MAIN SECTION -->                  
+      <section id="article-section" class="line archive">
+         <div class="margin">
+            <!-- ARTICLES -->             
+            <div class="s-12 l-9">
+               {% if category_quotes %}
+               <article class="margin-bottom">
+                  <div class="post-4 line">
+                     <!-- date -->                 
+                     <div class="s-12 l-12 " style="padding: 1em 1em 1em;">
+                        <p class="month" style="color: white;">Category: {{categoryname}} Quotes</p>
+                        
+
+                     </div>
+                  </div>
+               </article>
+               <!-- ARTICLE 1 -->
+               {% for quote in category_quotes %}               
+               <article class="margin-bottom">
+                  <div>
+                     <!-- date -->                 
+                     <div class="s-12 l-12 " style="padding: 1em 1em 1em;">
+                        <a class="month" style="color: black;font-size: x-large;" href="/quotes/author/{{quote.author.name}}">{{quote.author.name}}</a>
+                        
+                        <p class="date" style="color: black;float: right;">{{quote.submitedon}}</p>
+                        {% if quote.user.is_staff %}   
+                     <p>Admin</p>
+                  {% else %}
+                     <p>{{ quote.user.username }}</p>
+                     
+                  {%endif%}
+                     </div>
+                  </div>
+                  <!-- text -->                 
+                  <div class="post-1 line">
+                     
+                  
+                  <div style="padding: 2em 3em 1em;" >
+                     <a href="/quotes/search/?id={{quote.id}}" style="color: white;font-size: x-large;" id="quotes_{{quote.id}}">"{{quote.quotes}}"
+                     </a>
+                     
+                  </div>
+                  <div class="social">
+                  <a onclick="updatedata('shareFacebook_{{quote.id}}')">
+                     <img style="height: 30px;width: 30px;cursor: pointer;" src="/static/img/icon/facebook-logo.png" />
+                  </a> 
+
+                  <a onclick="updatedata('shareInstagram_{{quote.id}}')">
+                     <img style="height: 30px;width: 30px;cursor: pointer;" src="/static/img/icon/instagram.png" />
+                  </a> 
+
+                  <a onclick="updatedata('shareWhatsapp_{{quote.id}}')">
+                     <img  style="height: 30px;width: 30px;cursor: pointer;" src="/static/img/icon/whatsapp-logo.png" />
+                  </a> 
+
+
+                  <button id="copyquotes_{{quote.id}}" onclick="updatedata('copyquotes_{{quote.id}}')" class="right" style="background:rgba(0,0,0,0.5);color: white;border: 2px solid #e7e7e7;height: 30px;cursor: copy;">copy-text</button>  
+
+               </div> 
+               </div>
+               </article>
+               {% endfor %}
+               {% endif %}
+
+               
+            </div>
+       
+   {% endblock %}

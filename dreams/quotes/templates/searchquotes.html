@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+{% block pagecontent %}
+<!-- MAIN SECTION -->                  
+<section id="home-section" class="line">
+   <div class="margin">
+      <!-- ARTICLES -->             
+      <div class="s-12 l-9">
+
+         <!-- ARTICLE 5 -->              
+         <!-- text -->
+
+         {% if quote %}
+
+         <article class="post-4 line" >
+            <div class="s-12 l-12 post-text">                   
+               <a href="/author/{{ quote.author.name }}" >
+                  <h3 style="color: #77d1e0;">{{ quote.author.name }}</h3>
+               </a>
+               <p style="float: right;">{{ quote.submitedon }}</p>
+               {% if quote.user.is_staff %}   
+                     <p>Admin</p>
+                  {% else %}
+                     <p>{{ quote.user.username }}</p>
+                     
+                  {%endif%}
+               <br>
+               <h3 id="quotes_{{quote.id}}" style="text-align: justify;color: white;">"{{ quote.quotes}}"</h3> 
+               <div class="social">
+                  <a onclick="updatedata('shareFacebook_{{quote.id}}')">
+                     <img style="height: 30px;width: 30px;cursor: pointer;" src="/static/img/icon/facebook-logo.png" />
+                  </a> 
+
+                  <a onclick="updatedata('shareInstagram_{{quote.id}}')">
+                     <img style="height: 30px;width: 30px;cursor: pointer;" src="/static/img/icon/instagram.png" />
+                  </a> 
+
+                  <a onclick="updatedata('shareWhatsapp_{{quote.id}}')">
+                     <img  style="height: 30px;width: 30px;cursor: pointer;" src="/static/img/icon/whatsapp-logo.png" />
+                  </a> 
+
+
+                  <button id="copyquotes_{{quote.id}}" onclick="updatedata('copyquotes_{{quote.id}}')" class="right" style="background:rgba(0,0,0,0.5);color: white;border: 2px solid #e7e7e7;height: 30px;cursor: copy;">copy-text</button>
+
+               </div>            
+            </div>
+
+                  <!-- <div class="s-12 l-5 post-text" >
+                     <a href="post-5.html" >
+                        <h3 style="color: white;"> <a href="/quotes/author/{{ quote.author.name }}">{{ quote.author.name }}</a> say about <span style="color: white;">{{ quote.category.name }}</span> </h3>
+                     </a>
+                     <p style="text-align: justify;color: white;font-size: 1em;font-weight: 100;">{{ quote.quotes}}</p>
+                  </div> -->
+                  <!-- date -->                 
+               </article>
+
+            </br>
+
+            {% endif %}
+         </div>
+      
+{% endblock %}
